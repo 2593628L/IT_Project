@@ -9,31 +9,34 @@
 </head>
 <body class="diy_background">
 
-<header class="p-3 bg-white text-dark position-sticky " style="top:0;z-index: 9999">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <header class="p-3 bg-white text-dark position-sticky " style="top:0;z-index: 9999">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-dark">About</a></li>
-                <li><a href="#" th:href="@{/addSubject}" th:if="${user}!=null" class="nav-link px-2 text-dark">Add Subject</a></li>
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="test.html" th:action="@{/search}">
-                <input type="search" class="form-control form-control-dark" name="searchContent" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <div class="text-end">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/" th:href="@{/sign}" class="nav-link px-2 text-dark" th:if="${user}==null">Sign up</a></li>
-                    <li><a href="#"  th:href="@{/login}" class="nav-link px-2 text-dark" th:if="${user}==null">Login</a></li>
-                    <li><a href="#"  class="nav-link px-2 text-dark" th:if="${user}!=null" th:text="${user.username}">Login</a></li>
-                    <li><a href="#" th:href="@{/logout}" class="nav-link px-2 text-dark" th:if="${user}!=null">Log out</a></li>
+                    <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 text-dark">About</a></li>
+                    <li><a href="#" th:href="@{/addSubject}" th:if="${user}!=null" class="nav-link px-2 text-dark">Add Subject</a></li>
                 </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="test.html" th:action="@{/search}">
+                    <input type="search" class="form-control form-control-dark" name="searchContent" placeholder="Search..." aria-label="Search">
+                </form>
+
+                <div class="text-end">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="/" th:href="@{/sign}" class="nav-link px-2 text-dark" th:if="${user}==null">Sign up</a></li>
+                        <li><a href="#"  th:href="@{/login}" class="nav-link px-2 text-dark" th:if="${user}==null">Login</a></li>
+                        <li><a href="#"  class="nav-link px-2 text-dark" th:if="${user}!=null" th:text="${user.username}">Login</a></li>
+                        <li><a href="#" th:href="@{/logout}" class="nav-link px-2 text-dark" th:if="${user}!=null">Log out</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+<div style="height: 2em"></div>
+
+
 
 <main class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-black " style="opacity: 0.6;">

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Subject</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../static/css/diy.css" >
+</head>
+<header  class="p-3 bg-white text-dark position-sticky" style="top:0em;z-index: 999">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">About</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" th:action="@{/search}">
+                <input type="search" class="form-control form-control-dark" name="searchContent" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" th:href="@{/sign}" class="nav-link px-2 text-dark" th:if="${user}==null">Sign up</a></li>
+                    <li><a href="#"  th:href="@{/login}" class="nav-link px-2 text-dark" th:if="${user}==null">Login</a></li>
+                    <li><a href="#"  class="nav-link px-2 text-dark"  th:text="${user.username}">Login</a></li>
+                    <li><a href="#"  th:href="@{/logout}" class="nav-link px-2 text-dark">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<body class="text-center diy_background ">
+
+
+    <div class="diy_center" >
+        <h4 style="padding-top: 2em">Add Subject</h4>
+        <form method="post" th:action="@{/addSubject}" style="padding-top: 2em">
+            <table style=" width: 100%">
+                <tr >
+                    <td style="text-align: center">Subject Name</td>
+                    <td style="text-align: left;height: 5em"><input type="text" name="name" class="diy_input"></td>
+                </tr>
+            </table>
+            <button type="submit" class="btn btn-outline-secondary" style="margin-top: 2em">submit</button>
+
+    </form>
+    </div>
+
+
+
+
+
+<!--<script src="../static/js/jquery.min.js"></script>-->
+<!--<script src="../static/js/bootstrap.bundle.min.js" ></script>-->
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" >
+    <link rel="stylesheet" href="../static/css/diy.css" >
+</head>
+<body>
+
+<!--<div class="container-fluid">-->
+<!--    <form method="post" th:action="@{/course/addTheCourse}">-->
+<!--        <label>Add Book</label><br>-->
+<!--        <input type="text" name="name" placeholder="bookname"><br>-->
+<!--        <input type="text" name="name" placeholder="author"><br>-->
+<!--        <input type="text" name="name" placeholder="discription"><br>-->
+<!--        <select name="subjectId">-->
+<!--            <option th:each="course:${courses}" th:value="${course.id}" th:text="${course.name}"></option>-->
+<!--        </select>-->
+<!--        <input type="submit" value="Submit">-->
+<!--    </form>-->
+<!--</div>-->
+
+<p>Add a book</p>
+<form th:action="upload" method="POST" enctype="multipart/form-data">
+    BookFile：<input type="file" name="file"/>
+    <input type="text" name="bookname" placeholder="Title of book">
+    <input type="text" name="author" placeholder="Author of book">
+    <input type="text" name="description" placeholder="Description of book">
+    <select name="courseId">
+        <option th:each="course:${courses}" th:value="${course.id}" th:text="${course.name}">Pick a course</option>
+    </select>
+    <input type="submit"/>
+
+</form>
+
+
+
+<script src="../static/js/jquery.slim.min.js"></script>
+<script src="../static/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>

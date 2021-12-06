@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Result</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../static/css/diy.css" >
+</head>
+<body class="diy_background">
+<header class="p-3 bg-white text-dark position-sticky" style="top:0em;z-index: 999">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">About</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" th:action="@{/search}">
+                <input type="search" class="form-control form-control-dark" name="searchContent" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" th:href="@{/sign}" class="nav-link px-2 text-dark" th:if="${user}==null">Sign up</a></li>
+                    <li><a href="#"  th:href="@{/login}" class="nav-link px-2 text-dark" th:if="${user}==null">Login</a></li>
+                    <li><a href="#"  class="nav-link px-2 text-dark" th:if="${user}!=null" th:text="${user.username}">Login</a></li>
+                    <li><a href="#"  th:href="@{/logout}" class="nav-link px-2 text-dark" th:if="${user}!=null">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<main class="container">
+    <div  style="margin-top: 1em">
+        <h2 class="text-center" >Results</h2>
+    </div>
+
+    <div id="subjectResult" class="diy_visible" style="margin-top: 1em" th:if="${subjects}!=null">
+        <div th:each="subject:${subjects}">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+                <div class="col p-4 d-flex flex-column position-static"><br><br>
+                    <h2 class="mb-0 text-dark text-center" th:text="${subject.name}" >Featured post</h2><br><br>
+                    <a href="#" th:href="@{/subject/{id}(id=${subject.id})}" class=" text-end text-decoration-none text-dark">view</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="courseResult"  class="diy_visible" style="margin-top: 2em"  th:if="${courseLists}!=null">
+        <div class="col-md-12 " th:each="course:${courseLists}">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+                <div class="col p-4 d-flex flex-column position-static"><br><br>
+                    <h2 class="mb-0 text-dark text-center" th:text="${course.name}">Featured post</h2><br><br>
+                    <!--                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>-->
+                    <a href="#" th:href="@{/course/{id}(id=${course.id})}" class=" text-end text-decoration-none text-dark">view</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bookResult" class="diy_visible" style="margin-top: 2em" th:if="${bookLists}!=null">
+
+
+
+            <div class="col-md-12 " th:each="book:${bookLists}">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+                    <div class="col p-4 d-flex flex-column position-static"><br><br>
+                        <h2 class="mb-0 text-dark text-center" th:text="${book.name}">Featured post</h2><br><br>
+                        <!--                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>-->
+                        <a href="#" th:href="@{/book/{id}(id=${book.bookid})}" class=" text-end text-decoration-none text-dark">view</a>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+</main>
+
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js" ></script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+/*visible*/
+.diy_visible{
+    opacity: 0.85;
+}
+
+/*pics*/
+.diy_background{
+    background-image:url("../image/background/leaf.jpg") ;
+
+}
+
+/*comment box*/
+.commentbox{
+    text-align: start;
+    width: 100%;
+    height: 5em;
+    margin: 0;
+    border: 0;
+}
+.btn-comment{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+/*position*/
+.melist-margin{
+    margin-right: 15%;
+    margin-left: 15%;
+}
+.mecard-padding{
+    padding-top: 2em;
+}
+.booktitle{
+    font-family: "Bookman Old Style";
+}
+.diy_margin{
+    margin-top: 0.5em;
+    border-bottom-color: #bacbe6;
+    border-width:1px;
+}
+.diy_padding{
+    padding: 0.5em;
+}
+.diy_center{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    height: 300px;
+    width: 600px;
+    /*border:1px solid lightgoldenrodyellow;*/
+    background-color: white;
+    border-radius: 10px;
+
+    color: black;
+
+}
+.diy_center_big{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    height: 400px;
+    width: 600px;
+    /*border:1px solid lightgoldenrodyellow;*/
+    background-color: white;
+    border-radius: 10px;
+
+    color: black;
+
+}
+
+
+
+.diy_padding_center{
+    padding-top: 30%;
+}
+.diy_input{
+    width: 80%;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+/**font
+ */
+.nickname{
+    font-weight: bold;
+    margin-top: 1em;
+    font-style: italic;
+    font-size: large;
+}
+.diy_time{
+    font-size: small;
+    color: #928c8c;
+}

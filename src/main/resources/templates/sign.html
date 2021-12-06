@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../static/css/signin.css" >
+    <link rel="stylesheet" href="../static/css/diy.css" >
+</head>
+<body class="text-center diy_background">
+<main class="form-signin ">
+    <form method="post" th:action="@{/signup}">
+        <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+            <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+<!--        <div class="checkbox mb-3">-->
+<!--            <label>-->
+<!--                <input type="checkbox" value="remember-me"> Remember me-->
+<!--            </label>-->
+<!--        </div>-->
+        <button class="w-100 btn btn-lg btn-outline-secondary" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">17 &copy; 2021</p>
+    </form>
+</main>
+
+
+
+<!--<script src="../static/js/jquery.min.js"></script>-->
+<!--<script src="../static/js/bootstrap.bundle.min.js" ></script>-->
+</body>
+</html>

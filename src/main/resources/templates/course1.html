@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${course.name}">Course</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" >
+    <link rel="stylesheet" href="../static/css/diy.css" >
+</head>
+<body>
+
+
+<div class="container-fluid">
+    <h2 th:if="${number}==0">There is no book for this course</h2>
+    <!--    <h2 th:text="${courseLists}"></h2>-->
+    <div class="list-group melist-margin">
+        <a th:href="@{/book/{id}(id=${book.bookid})}" class="list-group-item list-group-item-action text-center" th:each="book:${bookLists}" th:text="${book.name}">A second link item</a>
+    </div>
+    <a href="#" th:href="@{/book/input}">add a book </a>
+</div>
+
+
+
+
+<script src="../static/js/jquery.slim.min.js"></script>
+<script src="../static/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${course.name}">Homepage</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../static/css/diy.css" >
+</head>
+<body class="diy_background">
+<header class="p-3 bg-white text-dark ">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-secondary">About</a></li>
+                <li><a href="#" th:href="@{/book/input}" th:if="${user}!=null" class="nav-link px-2 text-dark">Add Book</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" th:action="@{/search}">
+                <input type="search" class="form-control form-control-dark" name="searchContent" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" th:href="@{/sign}" class="nav-link px-2 text-dark" th:if="${user}==null">Sign up</a></li>
+                    <li><a href="#"  th:href="@{/login}" class="nav-link px-2 text-dark" th:if="${user}==null">Login</a></li>
+                    <li><a href="#"  class="nav-link px-2 text-dark" th:if="${user}!=null" th:text="${user.username}">Login</a></li>
+                    <li><a href="#"  th:href="@{/logout}"  class="nav-link px-2 text-dark" th:if="${user}!=null">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<main class="container">
+
+
+
+
+    <div class="row g-5">
+        <div class="col-md-8">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom text-center diy_margin">
+                     BookList of [[${course.name}]]
+                </h3>
+            <div class="row mb-2 diy_visible ">
+                <div class="col-md-12 " th:each="book:${bookLists}">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+                        <div class="col p-4 d-flex flex-column position-static"><br><br>
+                            <h2 class="mb-0 text-dark text-center" th:text="${book.name}">Featured post</h2><br><br>
+                            <!--                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>-->
+                            <a href="#" th:href="@{/book/{id}(id=${book.bookid})}" class=" text-end text-decoration-none text-dark">view</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+
+        <div class="col-md-4">
+            <div class="position-sticky " style="top: 2rem; ">
+                <div class="p-4 mb-3 bg-light rounded ">
+                    <h4 class="fst-italic text-center diy_visible" >Comments</h4>
+                </div>
+                    <div id="commentForm" class="bg-white rounded" th:if="${user}!=null">
+                        <input type="hidden" name="courseId" th:value="${course.id}">
+                        <input type="hidden" name="theCommentId" th:value="-1">
+                        <input type="hidden" name="nickname" th:value="${user.username}">
+                        <textarea class="commentbox rounded-2" name="content" ></textarea>
+                        <button id="post-btn" class="rounded btn-outline-dark btn-comment ">make your comment</button>
+                    </div>
+
+            </div>
+            <div class="bg-white diy_margin ">
+                <div id="commentArea"  >
+                    <div th:fragment="coursecomment">
+                        <div th:each="comment:${comments}" class="bg-white diy_margin">
+                            <div th:text="${comment.nickname}" class="nickname text-black diy_padding">
+                               nickname
+                            </div>
+
+                            <div th:text="${comment.content}" class=" diy_padding">this subject really good</div>
+
+                           <div th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}" class="text-end diy_padding diy_time">
+                               2021
+                           </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.bundle.js" ></script>
+<script th:inline="javascript">
+    $('#post-btn').click(function(){
+        postData();
+    });
+    $(function(){
+        $("#commentArea").load(/*[[@{/comments/course/{courseid}(courseid=${course.id})}]]*/"");
+    });
+    function postData(){
+        $("#commentArea").load(/*[[@{/comments}]]*/"",{
+            "theCommentId":$("[name='theCommentId']").val(),
+            "courseId":$("[name='courseId']").val(),
+            "content":$("[name='content']").val(),
+            "nickname":$("[name='nickname']").val()
+        },function(responseTxt,statusTxt,xhr){
+            clearContent();
+        });
+    }
+    function clearContent(){
+        $("[name='content']").val('');
+        $("[name='theCommentId']").val(-1);
+    }
+</script>
+</body>
+</html>
